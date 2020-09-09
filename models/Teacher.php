@@ -40,9 +40,9 @@ class Teacher extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'academic_degree' => 'Academic Degree',
+            'id' => 'Номер',
+            'name' => 'ФИО',
+            'academic_degree' => 'Академическая степень',
         ];
     }
 

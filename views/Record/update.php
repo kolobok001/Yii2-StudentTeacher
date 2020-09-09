@@ -4,11 +4,11 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\StudentGroupeCourseWithTeacher */
-
-$this->title = 'Update Student Groupe Course With Teacher: ' . $model->id;
+$courseName=$model->getCourseTitleName();
+$this->title = 'Редактирование записи на курс: ' . $courseName;
 $this->params['breadcrumbs'][] = ['label' => 'Записи на курс', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => $courseName, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Редактирование';
 ?>
 <div class="student-groupe-course-with-teacher-update">
 

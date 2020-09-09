@@ -28,10 +28,34 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'groupe_id',
-            'teacher_id',
-            'course_id',
-            'status',
+            [
+                'format' => 'html',
+                'label' => 'Группа',
+                'value' => function($data){
+                    return $data->GetGroupeLink();
+                }
+            ],
+            [
+                'format' => 'html',
+                'label' => 'Группа',
+                'value' => function($data){
+                    return $data->GetTeacherLink();
+                }
+            ],
+            [
+                'format' => 'html',
+                'label' => 'Группа',
+                'value' => function($data){
+                    return $data->GetCourseLink();
+                }
+            ],
+            [
+                'format' => 'text',
+                'label' => 'Статус',
+                'value' => function($data){
+                    return ($data->getStatusName());
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

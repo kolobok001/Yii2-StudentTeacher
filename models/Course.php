@@ -29,8 +29,9 @@ class Course extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['name'], 'required','message'=>'Введите наименование курса'],
             [['name', 'description'], 'string', 'max' => 255],
+            [['description'],'default','value'=>'Без описания']
         ];
     }
 

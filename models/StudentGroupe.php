@@ -31,7 +31,7 @@ class StudentGroupe extends \yii\db\ActiveRecord
     {
         return [
             [['number', 'department'], 'required'],
-            [['number', 'department'], 'string', 'max' => 255],
+            [['number', 'department'], 'string','max' => 255],
         ];
     }
 
@@ -41,9 +41,9 @@ class StudentGroupe extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'number' => 'Number',
-            'department' => 'Department',
+            'id' => 'Номер',
+            'number' => 'Номер группы',
+            'department' => 'Подразделение',
         ];
     }
 

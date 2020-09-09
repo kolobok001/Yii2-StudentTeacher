@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "studentgroupecoursewithteacher".
@@ -52,11 +54,11 @@ class StudentGroupeCourseWithTeacher extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'groupe_id' => 'Groupe ID',
-            'teacher_id' => 'Teacher ID',
-            'course_id' => 'Course ID',
-            'status' => 'Status',
+            'id' => 'Номер',
+            'groupe_id' => 'Группа',
+            'teacher_id' => 'Преподаватель',
+            'course_id' => 'Курс',
+            'status' => 'Статус',
         ];
     }
 
@@ -79,6 +81,10 @@ class StudentGroupeCourseWithTeacher extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Studentgroupe::className(), ['id' => 'groupe_id']);
     }
+    public function getCourseTitleName()
+    {
+        return Course::findOne($this->course_id)->name.' у группы '.\app\models\StudentGroupe::findOne($this->groupe_id)->number;
+    }
 
     /**
      * Gets query for [[Teacher]].
@@ -92,6 +98,24 @@ class StudentGroupeCourseWithTeacher extends \yii\db\ActiveRecord
     public function getStatusName()
     {
         return ArrayHelper::getValue(self::getStatusesArray(), $this->status);
+    }
+    public function getGroupeName(){
+        return StudentGroupe::findOne($this->groupe_id)->number;
+    }
+    public function getGroupeLink(){
+        return Html::a($this->getGroupeName(), ['student-groupe/view', 'id' => $this->course_id], ['class' => 'profile-link']);
+    }
+    public function getCourseName(){
+        return Course::findOne($this->course_id)->name;
+    }
+    public function getCourseLink(){
+        return Html::a($this->getCourseName(), ['course/view', 'id' => $this->course_id], ['class' => 'profile-link']);
+    }
+    public function getTeacherName(){
+        return Teacher::findOne($this->teacher_id)->name;
+    }
+    public function getTeacherLink(){
+        return Html::a($this->getTeacherName(), ['teacher/view', 'id' => $this->course_id], ['class' => 'profile-link']);
     }
 
     public static function getStatusesArray()

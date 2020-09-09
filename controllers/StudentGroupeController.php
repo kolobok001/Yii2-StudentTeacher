@@ -2,9 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\Student;
 use Yii;
 use app\models\StudentGroupe;
 use app\models\StudentGroupeSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -52,8 +54,13 @@ class StudentGroupeController extends AppController
      */
     public function actionView($id)
     {
+        $studentsDataProvider = new ActiveDataProvider([
+            'query' => Student::find()->where(['groupe_id'=>$id]),
+        ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'students'=>$studentsDataProvider,
         ]);
     }
 

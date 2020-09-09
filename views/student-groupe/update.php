@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\StudentGroupe */
 
-$this->title = 'Update Student Groupe: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Student Groupes', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Редактирование группы: ' . $model->number;
+$this->params['breadcrumbs'][] = ['label' => 'Группы', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->number, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Редактирование';
 ?>
 <div class="student-groupe-update">
 

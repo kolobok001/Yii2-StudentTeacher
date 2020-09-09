@@ -5,8 +5,8 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\StudentGroupeCourseWithTeacher */
-
-$this->title = $model->id;
+$courseName=$model->getCourseTitleName();
+$this->title = $courseName;
 $this->params['breadcrumbs'][] = ['label' => 'Записи на курс', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Удалить?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -30,10 +30,34 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'groupe_id',
-            'teacher_id',
-            'course_id',
-            'status',
+            [
+                'format' => 'html',
+                'label' => 'Группа',
+                'value' => function($data){
+                    return $data->GetGroupeLink();
+                }
+            ],
+            [
+                'format' => 'html',
+                'label' => 'Группа',
+                'value' => function($data){
+                    return $data->GetTeacherLink();
+                }
+            ],
+            [
+                'format' => 'html',
+                'label' => 'Группа',
+                'value' => function($data){
+                    return $data->GetCourseLink();
+                }
+            ],
+            [
+                'format' => 'text',
+                'label' => 'Статус',
+                'value' => function($data){
+                    return ($data->getStatusName());
+                }
+            ],
         ],
     ]) ?>
 

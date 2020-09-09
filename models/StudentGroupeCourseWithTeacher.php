@@ -81,9 +81,10 @@ class StudentGroupeCourseWithTeacher extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Studentgroupe::className(), ['id' => 'groupe_id']);
     }
+
     public function getCourseTitleName()
     {
-        return Course::findOne($this->course_id)->name.' у группы '.\app\models\StudentGroupe::findOne($this->groupe_id)->number;
+        return Course::findOne($this->course_id)->name . ' у группы ' . \app\models\StudentGroupe::findOne($this->groupe_id)->number;
     }
 
     /**
@@ -95,26 +96,44 @@ class StudentGroupeCourseWithTeacher extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Teacher::className(), ['id' => 'teacher_id']);
     }
+
     public function getStatusName()
     {
         return ArrayHelper::getValue(self::getStatusesArray(), $this->status);
     }
-    public function getGroupeName(){
+
+    public function getStatusStyle()
+    {
+        return  ArrayHelper::getValue(self::getStatusesStyleArray(), $this->status);
+    }
+
+    public function getGroupeName()
+    {
         return StudentGroupe::findOne($this->groupe_id)->number;
     }
-    public function getGroupeLink(){
+
+    public function getGroupeLink()
+    {
         return Html::a($this->getGroupeName(), ['student-groupe/view', 'id' => $this->course_id], ['class' => 'profile-link']);
     }
-    public function getCourseName(){
+
+    public function getCourseName()
+    {
         return Course::findOne($this->course_id)->name;
     }
-    public function getCourseLink(){
+
+    public function getCourseLink()
+    {
         return Html::a($this->getCourseName(), ['course/view', 'id' => $this->course_id], ['class' => 'profile-link']);
     }
-    public function getTeacherName(){
+
+    public function getTeacherName()
+    {
         return Teacher::findOne($this->teacher_id)->name;
     }
-    public function getTeacherLink(){
+
+    public function getTeacherLink()
+    {
         return Html::a($this->getTeacherName(), ['teacher/view', 'id' => $this->course_id], ['class' => 'profile-link']);
     }
 
@@ -125,5 +144,17 @@ class StudentGroupeCourseWithTeacher extends \yii\db\ActiveRecord
             self::STATUS_OK => 'Согласовано',
             self::STATUS_CANCEL => 'Отклонено',
         ];
+
+
+    }
+    public static function getStatusesStyleArray()
+    {
+        return [
+            self::STATUS_NEW => '#ffff66',
+            self::STATUS_OK => '#00ff00',
+            self::STATUS_CANCEL => '#cc0000',
+        ];
+
+
     }
 }

@@ -39,23 +39,23 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'format' => 'html',
-                'label' => 'Группа',
+                'label' => 'Преподаватель',
                 'value' => function($data){
                     return $data->GetTeacherLink();
                 }
             ],
             [
                 'format' => 'html',
-                'label' => 'Группа',
+                'label' => 'Курс',
                 'value' => function($data){
                     return $data->GetCourseLink();
                 }
             ],
             [
-                'format' => 'text',
+                'format' => 'html',
                 'label' => 'Статус',
                 'value' => function($data){
-                    return ($data->getStatusName());
+                    return '<font color="'.$data->getStatusStyle().'">'.$data->getStatusName().'</font>';
                 }
             ],
         ],

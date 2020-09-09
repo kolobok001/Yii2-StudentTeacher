@@ -2,20 +2,17 @@
 
 namespace app\controllers;
 
-use phpDocumentor\Reflection\Types\Null_;
 use Yii;
-use app\models\Student;
-use app\models\StudentSearch;
-use app\models\ImageUpload;
+use app\models\StudentGroupeCourseWithTeacher;
+use app\models\RecordSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * StudentController implements the CRUD actions for Student model.
+ * RecordController implements the CRUD actions for StudentGroupeCourseWithTeacher model.
  */
-class StudentController extends AppController
+class RecordController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -33,12 +30,12 @@ class StudentController extends AppController
     }
 
     /**
-     * Lists all Student models.
+     * Lists all StudentGroupeCourseWithTeacher models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new StudentSearch();
+        $searchModel = new RecordSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +45,7 @@ class StudentController extends AppController
     }
 
     /**
-     * Displays a single Student model.
+     * Displays a single StudentGroupeCourseWithTeacher model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,28 +58,17 @@ class StudentController extends AppController
     }
 
     /**
-     * Creates a new Student model.
+     * Creates a new StudentGroupeCourseWithTeacher model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Student();
-        $image = new ImageUpload();
-        if (Yii::$app->request->isPost) {
+        $model = new StudentGroupeCourseWithTeacher();
 
-            $file = UploadedFile::getInstance($model, 'photo');
-            if ($model->load(Yii::$app->request->post())) {
-                if ($file != Null)
-                    $model->photo = $image->uploadFile($file, '');
-                else
-                $model->photo = NULL;
-                if ($model->save()) {
-                    return $this->redirect(['view', 'id' => $model->id]);
-                }
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
-
 
         return $this->render('create', [
             'model' => $model,
@@ -90,7 +76,7 @@ class StudentController extends AppController
     }
 
     /**
-     * Updates an existing Student model.
+     * Updates an existing StudentGroupeCourseWithTeacher model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -99,24 +85,9 @@ class StudentController extends AppController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $temp = $model->photo;
-        $image = new ImageUpload();
-        if (Yii::$app->request->isPost) {
 
-            $file = UploadedFile::getInstance($model, 'photo');
-
-
-            if ($model->load(Yii::$app->request->post())) {
-                if ($file != Null)
-                    $model->photo = $image->uploadFile($file, $temp);
-                else {
-
-                    $model->photo = $temp;
-                }
-                if ($model->save()) {
-                    return $this->redirect(['view', 'id' => $model->id]);
-                }
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -125,7 +96,7 @@ class StudentController extends AppController
     }
 
     /**
-     * Deletes an existing Student model.
+     * Deletes an existing StudentGroupeCourseWithTeacher model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -133,24 +104,21 @@ class StudentController extends AppController
      */
     public function actionDelete($id)
     {
-        $image = new ImageUpload;
-        $model = $this->findModel($id);
-        $image->deleteCurrentImage($model->photo);
-        $model->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Student model based on its primary key value.
+     * Finds the StudentGroupeCourseWithTeacher model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Student the loaded model
+     * @return StudentGroupeCourseWithTeacher the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Student::findOne($id)) !== null) {
+        if (($model = StudentGroupeCourseWithTeacher::findOne($id)) !== null) {
             return $model;
         }
 

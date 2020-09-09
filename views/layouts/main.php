@@ -38,9 +38,11 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Студенты', 'url' => ['/student/index']],
+            ['label' => 'Группы', 'url' => ['/student-groupe/index']],
+            ['label' => 'Учителя', 'url' => ['/teacher/index']],
+            ['label' => 'Курсы', 'url' => ['/course/index']],
+            ['label' => 'Записи на курс', 'url' => ['/record/index']],
 
         ],
     ]);

@@ -19,20 +19,19 @@ class Student extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName(){
         return 'student';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules(){
         return [
             [['name', 'groupe_id'], 'required'],
             [['groupe_id'], 'integer'],
-            [['name', 'photo'], 'string', 'max' => 255],
+            [['name'], 'string', 'max' => 255],
+            [['photo'], 'file', 'extensions' => 'png, jpg'],
             [['groupe_id'], 'exist', 'skipOnError' => true, 'targetClass' => Studentgroupe::className(), 'targetAttribute' => ['groupe_id' => 'id']],
         ];
     }
@@ -40,13 +39,12 @@ class Student extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels(){
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'groupe_id' => 'Groupe ID',
-            'photo' => 'Photo',
+            'name' => 'ФИО',
+            'groupe_id' => 'Группа',
+            'photo' => 'Фото',
         ];
     }
 
@@ -55,8 +53,13 @@ class Student extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getGroupe()
-    {
+    public function getGroupe(){
         return $this->hasOne(Studentgroupe::className(), ['id' => 'groupe_id']);
     }
+    public function getImage()
+    {
+        return ($this->photo) ? '/uploads/' . $this->photo : '/no-image.png';
+    }
+
+
 }

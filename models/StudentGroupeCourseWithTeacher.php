@@ -19,6 +19,11 @@ use Yii;
  */
 class StudentGroupeCourseWithTeacher extends \yii\db\ActiveRecord
 {
+    const STATUS_NEW = 1;
+    const STATUS_OK = 2;
+    const STATUS_CANCEL = 3;
+
+
     /**
      * {@inheritdoc}
      */
@@ -83,5 +88,18 @@ class StudentGroupeCourseWithTeacher extends \yii\db\ActiveRecord
     public function getTeacher()
     {
         return $this->hasOne(Teacher::className(), ['id' => 'teacher_id']);
+    }
+    public function getStatusName()
+    {
+        return ArrayHelper::getValue(self::getStatusesArray(), $this->status);
+    }
+
+    public static function getStatusesArray()
+    {
+        return [
+            self::STATUS_NEW => 'На согласовании',
+            self::STATUS_OK => 'Согласовано',
+            self::STATUS_CANCEL => 'Отклонено',
+        ];
     }
 }

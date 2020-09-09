@@ -114,6 +114,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\tstdyii\web" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="codeception.yml" type="CodeceptionConfigurationType" factoryName="Codeception">
       <PhpTestRunnerSettings scope="ConfigurationFile" />
@@ -130,7 +135,8 @@
       <updated>1599551846896</updated>
       <workItem from="1599551848133" duration="7668000" />
       <workItem from="1599568595297" duration="4183000" />
-      <workItem from="1599575210380" duration="1329000" />
+      <workItem from="1599575210380" duration="1749000" />
+      <workItem from="1599624619426" duration="10815000" />
     </task>
     <servers />
   </component>
@@ -138,9 +144,17 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="782" y="539" key="NewPhpFileDialog" timestamp="1599554587318">
+    <state x="782" y="539" key="NewPhpFileDialog" timestamp="1599629338602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="782" y="539" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599554587318" />
+    <state x="782" y="539" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599629338602" />
+    <state width="254" height="198" key="ShowFilterAction_Filter_Popup" timestamp="1599626152213">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="254" height="198" key="ShowFilterAction_Filter_Popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599626152213" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599626167347">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599626167347" />
   </component>
 </project>

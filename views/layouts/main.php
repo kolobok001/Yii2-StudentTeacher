@@ -40,7 +40,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Студенты', 'url' => ['/student/index']],
             ['label' => 'Группы', 'url' => ['/student-groupe/index']],
-            ['label' => 'Учителя', 'url' => ['/teacher/index']],
+            ['label' => 'Преподаватели', 'url' => ['/teacher/index']],
             ['label' => 'Курсы', 'url' => ['/course/index']],
             ['label' => 'Записи на курс', 'url' => ['/record/index']],
 
